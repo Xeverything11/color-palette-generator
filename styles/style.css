@@ -1,0 +1,13 @@
+.supported-browser {
+    display: none;
+}
+
+@supports (color: color-mix(in srgb, red 50%, blue 50%)) {
+    .unsupported-browser {
+        display: none;
+    }
+
+    .supported-browser {
+        display: block;
+    }
+}

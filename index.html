@@ -9,7 +9,7 @@
         <title>Color Palette Generator</title>
     </head>
     <body>
-        <div class="container">
+        <div class="container-lg">
             <h1>
                 Color Palette Generator
             </h1>
@@ -26,58 +26,74 @@
                 <div class="row">
                     <div class="col-6 col-sm-3 col-lg-2">
                         <label for="from" class="form-label" style="display: block;">Starting color</label>
-                        <input type="color" class="form-control form-control-color" style="display: inline-block;" id="from" name="from">
-                        <span id="from-color-text">#000000</span>
+                        <input type="color" value="#ff0000" class="form-control form-control-color" style="display: inline-block;" id="from" name="from">
+                        <span id="from-color-text">#ff0000</span>
                     </div>
                     <div class="col-6 col-sm-3 col-lg-2">
                         <label for="to" class="form-label" style="display: block;">Finishing color</label>
-                        <input type="color" class="form-control form-control-color" style="display: inline-block;" id="to" name="to">
-                        <span id="to-color-text">#000000</span>
+                        <input type="color" value="#00ff99" class="form-control form-control-color" style="display: inline-block;" id="to" name="to">
+                        <span id="to-color-text">#00ff99</span>
                     </div>
                     <div class="col-6 col-sm-3 col-lg-2">
                         <label for="steps" class="form-label" style="display: block;">Number of steps</label>
-                        <input type="number" class="form-control form-control" style="display: inline-block;" id="to" name="to" min="2">
+                        <input type="number" value="6" class="form-control form-control" style="display: inline-block;" id="to" name="to" min="2">
                     </div>
                     <div class="col-6 col-sm-3 col-lg-2">
                         <label for="method" class="form-label" style="display: block;">Method</label>
                         <select class="form-select" name="method" id="methods">
-                            <option>srgb</option>
-                            <option>srgb-linear</option>
-                            <option>display-p3</option>
-                            <option>a98-rgb</option>
-                            <option>prophoto-rgb</option>
-                            <option>rec2020</option>
-                            <option>hsl shorter hue</option>
-                            <option>hsl longer hue</option>
-                            <option>hwb shorter hue</option>
-                            <option>hwb longer hue</option>
-                            <option>lab</option>
-                            <option>oklab</option>
-                            <option>lch shorter hue</option>
-                            <option>lch longer hue</option>
-                            <option>oklch shorter hue</option>
-                            <option>oklch longer hue</option>
-                            <option>xyz"</option>
-                            <option>xyz-d50</option>
-                            <option>xyz-d65</option>
+                            <option value="srgb">srgb</option>
+                            <option value="srgb-linear">srgb-linear</option>
+                            <option value="display-p3">display-p3</option>
+                            <option value="a98-rgb">a98-rgb</option>
+                            <option value="prophoto-rgb">prophoto-rgb</option>
+                            <option value="rec2020">rec2020</option>
+                            <option value="hsl shorter hue">hsl shorter hue</option>
+                            <option value="hsl longer hue">hsl longer hue</option>
+                            <option value="hwb shorter hue">hwb shorter hue</option>
+                            <option value="hwb longer hue">hwb longer hue</option>
+                            <option value="lab">lab</option>
+                            <option value="oklab"selected>oklab</option>
+                            <option value="lch shorter hue">lch shorter hue</option>
+                            <option value="lch longer hue">lch longer hue</option>
+                            <option value="oklch shorter hue">oklch shorter hue</option>
+                            <option value="oklch longer hue">oklch longer hue</option>
+                            <option value="xyz">xyz</option>
+                            <option value="xyz-d50">xyz-d50</option>
+                            <option value="xyz-d65">xyz-d65</option>
                         </select>
                     </div>
                     <div class="col-lg-4">
                         <div class="d-grid">
-                            <button type="button" class="btn btn-primary btn-block my-2" onclick="submitColorPattern()">Submit</button>
+                            <button type="button" class="btn btn-primary btn-block my-3" onclick="submitColorPalette()">Submit</button>
                         </div>
                     </div>
                 </div>
                 <div class="row" id="color-palette-result">
-                    <div class="my-3 col-3 col-sm-4 col-md-6 col-xl-12" style="background-color: color-mix(oklab, #ff0000 0%, #00ff99)" id="color-palette-id"></div>
-                    <div class="my-3 col-3 col-sm-4 col-md-6 col-xl-12" style="background-color: color-mix(oklab, #ff0000 20%, #00ff99)" id="color-palette-id"></div>
-                    <div class="my-3 col-3 col-sm-4 col-md-6 col-xl-12" style="background-color: color-mix(oklab, #ff0000 40%, #00ff99)" id="color-palette-id"></div>
-                    <div class="my-3 col-3 col-sm-4 col-md-6 col-xl-12" style="background-color: color-mix(oklab, #ff0000 60%, #00ff99)" id="color-palette-id"></div>
-                    <div class="my-3 col-3 col-sm-4 col-md-6 col-xl-12" style="background-color: color-mix(oklab, #ff0000 80%, #00ff99)" id="color-palette-id"></div>
-                    <div class="my-3 col-3 col-sm-4 col-md-6 col-xl-12" style="background-color: color-mix(oklab, #ff0000 100%, #00ff99)" id="color-palette-id"></div>
+                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
+                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 0%)" class="color-palette-id"></div>
+                    </div>
+                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
+                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 20%)" class="color-palette-id"></div>
+                    </div>
+                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
+                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 40%)" class="color-palette-id"></div>
+                    </div>
+                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
+                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 60%)" class="color-palette-id"></div>
+                    </div>
+                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
+                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 80%)" class="color-palette-id"></div>
+                    </div>
+                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
+                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 100%)" class="color-palette-id"></div>
+                    </div>
                 </div>
             </div>
+            <p>
+                &copy; 2025 Xeverything11. Licensed under the <a href="https://opensource.org/license/mit">MIT License</a>.
+            </p>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="script.js"></script>
     </body>
 </html>
