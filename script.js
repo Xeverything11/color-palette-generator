@@ -1,4 +1,14 @@
 const colorPaletteResult = document.getElementById("color-palette-result");
+const fromColorText = document.getElementById("from-color-text");
+const toColorText = document.getElementById("to-color-text");
+
+function updateColorText() {
+    const fromColor = document.getElementById("from").value;
+    const toColor = document.getElementById("to").value;
+
+    fromColorText.textContent = fromColor; // Update the text for from-color-text
+    toColorText.textContent = toColor;    // Update the text for to-color-text
+}
 
 function submitColorPalette() {
     var fromColor = document.getElementById("from").value;
@@ -16,3 +26,7 @@ function submitColorPalette() {
         colorPaletteDiv.appendChild(colorPaletteDivInner);
     }
 }
+
+// Add event listeners to update the color text when the color inputs change
+document.getElementById("from").addEventListener("input", updateColorText);
+document.getElementById("to").addEventListener("input", updateColorText);
