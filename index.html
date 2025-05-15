@@ -24,21 +24,21 @@
             <div class="supported-browser">
                 <p></p>
                 <div class="row">
-                    <div class="col-6 col-sm-3 col-lg-2">
+                    <div class="col-6 col-sm-3">
                         <label for="from" class="form-label" style="display: block;">Starting color</label>
                         <input type="color" value="#ff0000" class="form-control form-control-color" style="display: inline-block;" id="from" name="from">
                         <span id="from-color-text">#ff0000</span>
                     </div>
-                    <div class="col-6 col-sm-3 col-lg-2">
+                    <div class="col-6 col-sm-3">
                         <label for="to" class="form-label" style="display: block;">Finishing color</label>
                         <input type="color" value="#00ff99" class="form-control form-control-color" style="display: inline-block;" id="to" name="to">
                         <span id="to-color-text">#00ff99</span>
                     </div>
-                    <div class="col-6 col-sm-3 col-lg-2">
+                    <div class="col-6 col-sm-3">
                         <label for="steps" class="form-label" style="display: block;">Number of steps</label>
                         <input type="number" value="6" class="form-control form-control" style="display: inline-block;" id="steps" name="steps" min="2">
                     </div>
-                    <div class="col-6 col-sm-3 col-lg-2">
+                    <div class="col-6 col-sm-3">
                         <label for="method" class="form-label" style="display: block;">Method</label>
                         <select class="form-select" name="method" id="methods">
                             <option value="srgb">srgb</option>
@@ -61,11 +61,6 @@
                             <option value="xyz-d50">xyz-d50</option>
                             <option value="xyz-d65">xyz-d65</option>
                         </select>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="d-grid">
-                            <button type="button" class="btn btn-primary btn-block my-3" onclick="submitColorPalette()">Submit</button>
-                        </div>
                     </div>
                 </div>
                 <div class="row" id="color-palette-result">
@@ -97,7 +92,7 @@
                 </div>
                 <div class="col-12 col-md-3 text-md-end">
                     <p>
-                        Version 1.0.0
+                        Version 1.1.0
                     </p>
                 </div>
             </div>

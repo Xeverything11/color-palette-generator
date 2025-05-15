@@ -10,6 +10,20 @@ function updateColorText() {
     toColorText.textContent = toColor;    // Update the text for to-color-text
 }
 
+function handlePaletteInputChange() {
+    updateColorText();
+    submitColorPalette();
+}
+
+// Add event listeners to update the color text and palette when any input changes
+document.getElementById("from").addEventListener("input", handlePaletteInputChange);
+document.getElementById("to").addEventListener("input", handlePaletteInputChange);
+document.getElementById("steps").addEventListener("input", handlePaletteInputChange);
+document.getElementById("methods").addEventListener("input", handlePaletteInputChange);
+
+// Optionally, call once on page load to initialize
+handlePaletteInputChange();
+
 function submitColorPalette() {
     var fromColor = document.getElementById("from").value;
     var toColor = document.getElementById("to").value;
