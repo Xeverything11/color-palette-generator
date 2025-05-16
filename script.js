@@ -44,3 +44,5 @@ function submitColorPalette() {
 // Add event listeners to update the color text when the color inputs change
 document.getElementById("from").addEventListener("input", updateColorText);
 document.getElementById("to").addEventListener("input", updateColorText);
+
+document.getElementById("user-agent").textContent = navigator.userAgent;
