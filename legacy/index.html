@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="style.css"/>
+        <title>Color Palette Generator (for older browsers)</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1 class="title">Color Palette Generator (for older browsers)</h1>
+            <p>
+                This version of Color Palette Generator is for older browsers that do not support the <code>color-mix()</code> function. It uses JavaScript to generate color palettes via RGB. It works, even as early as IE6.
+            </p>
+            <div class="controls">
+                <div class="form-group">
+                    <label for="from">Starting color</label>
+                    <label for="fromRed">Red:</label>
+                    <input type="number" id="fromRed" name="fromRed" min="0" max="255" value="255">
+                    <label for="fromGreen">Green:</label>
+                    <input type="number" id="fromGreen" name="fromGreen" min="0" max="255" value="0">
+                    <label for="fromBlue">Blue:</label>
+                    <input type="number" id="fromBlue" name="fromBlue" min="0" max="255" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="to">Finishing color</label>
+                    <label for="toRed">Red:</label>
+                    <input type="number" id="toRed" name="toRed" min="0" max="255" value="0">
+                    <label for="toGreen">Green:</label>
+                    <input type="number" id="toGreen" name="toGreen" min="0" max="255" value="255">
+                    <label for="toBlue">Blue:</label>
+                    <input type="number" id="toBlue" name="toBlue" min="0" max="255" value="153">
+                </div>
+                <div class="form-group">
+                    <label for="steps">Number of steps</label>
+                    <input type="number" id="steps" name="steps" value="6" min="2">
+                </div>
+                <button id="generate">Generate Palette</button>
+            </div>
+            <div id="palette-output">
+                <!-- Palette will be displayed here -->
+            </div>
+        </div>
+        <div class="footer">
+            <p>
+                &copy;2025 Xeverything11
+            </p>
+            <p>
+                Version 0.1.0
+            </p>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>

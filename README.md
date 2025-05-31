@@ -10,3 +10,7 @@ Palette can now be changed whenever each input is changed.
 
 ## Version 1.0.0 (15 May 2025)
 Initial release
+
+## Legacy version
+### Version 0.1.0 (31 May 2025)
+Early alpha testing phase, has yet to test on IE6
