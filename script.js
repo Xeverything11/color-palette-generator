@@ -27,17 +27,17 @@ handlePaletteInputChange();
 function submitColorPalette() {
     var fromColor = document.getElementById("from").value;
     var toColor = document.getElementById("to").value;
-    var steps = document.getElementById("steps").value;
+    var steps = parseInt(document.getElementById("steps").value, 10);
     var method = document.getElementById("methods").value;
     colorPaletteResult.innerHTML = "";
     for (let i = 0; i < steps; i++) {
+        // Create the palette cell with Tailwind grid classes
         var colorPaletteDiv = document.createElement("div");
-        colorPaletteDiv.className = "col-4 col-sm-3 col-md-2 col-xl-1";
-        var colorPaletteDivInner = document.createElement("div");
-        colorPaletteDivInner.className = "py-5 my-2 w-auto rounded";
-        colorPaletteDivInner.style.backgroundColor = "color-mix(in " + method + ", " + fromColor + ", " + toColor + " " + (i / (steps - 1)) * 100 + "%)";
+        colorPaletteDiv.className = "h-24 rounded";
+        // Calculate the percentage for color-mix
+        var percent = (i / (steps - 1)) * 100;
+        colorPaletteDiv.style.backgroundColor = `color-mix(in ${method}, ${fromColor}, ${toColor} ${percent}%)`;
         colorPaletteResult.appendChild(colorPaletteDiv);
-        colorPaletteDiv.appendChild(colorPaletteDivInner);
     }
 }
 

@@ -4,46 +4,56 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="src/output.css"/>
         <link rel="stylesheet" href="styles/style.css"/>
         <title>Color Palette Generator</title>
     </head>
     <body>
-        <div class="container-lg">
-            <h1>
+        <div class="max-w-screen-xl font-sans text-gray-900 mx-auto p-4" style="font-feature-settings: 'ss01';">
+            <h1 class="text-3xl md:text-4xl font-light mb-4">
                 Color Palette Generator
             </h1>
-            <div class="alert alert-danger unsupported-browser">
-                <p>
-                    Color Palette Generator uses <code>color-mix()</code> function, which requires Chrome 111+, Edge 111+, Firefox 113+, Safari 16.2+ or Opera 97+, but this browser is too old for this tool. Please consider updating the browser.
+            <div class="unsupported-browsers bg-red-100 border border-red-700 text-red-900 my-2 p-4 rounded">
+                <p class="mb-2">
+                    Color Palette Generator uses <code class="text-pink-700 font-mono">color-mix()</code> function, which requires Chrome 111+, Edge 111+, Firefox 113+, Safari 16.2+ or Opera 97+, but this browser is too old for this tool. Please consider updating the browser.
                 </p>
-                <p>
+                <p class="mb-2">
                     <strong>Windows 7/8 users using Chrome or IE:</strong> Please install and use Firefox 115 ESR instead of Chrome 109 or IE 11, which the latter two don't support this tool.
                 </p>
-                <p>
-                    Youe user agent string is: <code id="user-agent"></code>
+                <p class="mb-2">
+                    Your user agent string is: <code class="text-pink-700 font-mono" id="user-agent"></code>
                 </p>
             </div>
             <div class="supported-browser">
-                <p></p>
-                <div class="row">
-                    <div class="col-6 col-sm-3">
-                        <label for="from" class="form-label" style="display: block;">Starting color</label>
-                        <input type="color" value="#ff0000" class="form-control form-control-color" style="display: inline-block;" id="from" name="from">
-                        <span id="from-color-text">#ff0000</span>
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-4">
+                    <div>
+                        <label for="from" class="font-semibold block">Starting color</label>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="rounded-full overflow-hidden size-8 border-2 border-gray-300 hover:border-gray-400 active:border-blue-500 inline-block">
+                                <input type="color" value="#ff0000" class="size-16 p-0 border-0 cursor-pointer" style="background: none; margin: -1rem;" id="from" name="from">
+                            </div>
+                            <span id="from-color-text">#ff0000</span>
+                        </div>
                     </div>
-                    <div class="col-6 col-sm-3">
-                        <label for="to" class="form-label" style="display: block;">Finishing color</label>
-                        <input type="color" value="#00ff99" class="form-control form-control-color" style="display: inline-block;" id="to" name="to">
-                        <span id="to-color-text">#00ff99</span>
+                    <div>
+                        <label for="to" class="font-semibold block">Finishing color</label>
+                        <div class="flex items-center gap-2 mb-2">
+                            <div class="rounded-full overflow-hidden size-8 border-2 border-gray-300 hover:border-gray-400 active:border-blue-500 inline-block">
+                                <input type="color" value="#00ff99" class="size-16 p-0 border-0 cursor-pointer" style="background: none; margin: -1rem;" id="to" name="to">
+                            </div>
+                            <span id="to-color-text">#00ff99</span>
+                        </div>
                     </div>
-                    <div class="col-6 col-sm-3">
-                        <label for="steps" class="form-label" style="display: block;">Number of steps</label>
-                        <input type="number" value="6" class="form-control form-control" style="display: inline-block;" id="steps" name="steps" min="2">
+                    <div>
+                        <label for="steps" class="font-semibold block">Number of steps</label>
+                        <input type="number" value="6" class="w-full bg-gray-50 focus:bg-white p-2 rounded border border-gray-300 hover:border-gray-400 focus:border-blue-500 focus:outline-none" id="steps" name="steps" min="2">
                     </div>
-                    <div class="col-6 col-sm-3">
-                        <label for="method" class="form-label" style="display: block;">Method</label>
-                        <select class="form-select" name="method" id="methods">
+                    <div>
+                        <label for="method" class="font-semibold block">Method</label>
+                        <select class="w-full bg-gray-50 focus:bg-white p-2 rounded border border-gray-300 hover:border-gray-400 focus:border-blue-500 focus:outline-none" name="method" id="methods">
                             <option value="srgb">srgb</option>
                             <option value="srgb-linear">srgb-linear</option>
                             <option value="display-p3">display-p3</option>
@@ -66,41 +76,25 @@
                         </select>
                     </div>
                 </div>
-                <div class="row" id="color-palette-result">
-                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
-                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 0%)" class="color-palette-id"></div>
-                    </div>
-                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
-                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 20%)" class="color-palette-id"></div>
-                    </div>
-                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
-                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 40%)" class="color-palette-id"></div>
-                    </div>
-                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
-                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 60%)" class="color-palette-id"></div>
-                    </div>
-                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
-                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 80%)" class="color-palette-id"></div>
-                    </div>
-                    <div class="col-4 col-sm-3 col-md-2 col-xl-1">
-                        <div class="py-5 my-2 w-auto rounded" style="background-color: color-mix(in oklab, #ff0000, #00ff99 100%)" class="color-palette-id"></div>
-                    </div>
+                <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4 mb-4" id="color-palette-result">
+                    <div class="h-24 rounded color-palette-id" style="background-color: color-mix(in oklab, #ff0000, #00ff99 0%)"></div>
+                    <div class="h-24 rounded color-palette-id" style="background-color: color-mix(in oklab, #ff0000, #00ff99 20%)"></div>
+                    <div class="h-24 rounded color-palette-id" style="background-color: color-mix(in oklab, #ff0000, #00ff99 40%)"></div>
+                    <div class="h-24 rounded color-palette-id" style="background-color: color-mix(in oklab, #ff0000, #00ff99 60%)"></div>
+                    <div class="h-24 rounded color-palette-id" style="background-color: color-mix(in oklab, #ff0000, #00ff99 80%)"></div>
+                    <div class="h-24 rounded color-palette-id" style="background-color: color-mix(in oklab, #ff0000, #00ff99 100%)"></div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12 col-md-9 text-center text-md-start">
-                    <p>
-                        &copy; 2025 Xeverything11. Licensed under the <a href="https://opensource.org/license/mit">MIT License</a>.
-                    </p>
-                </div>
-                <div class="col-12 col-md-3 text-center text-md-end">
-                    <p>
-                        Version 1.2.0
-                    </p>
-                </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-center sm:text-start mb-2">
+                    &copy; 2025 Xeverything11. Licensed under the <a href="https://opensource.org/license/mit" class="text-blue-700 hover:text-blue-800 hover:underline">MIT License</a>.
+                </p>
+                <p class="text-center sm:text-end mb-2">
+                    Version 2.0.0
+                </p>
             </div>
             <p>
-                To contribute, please make a pull request on <a href="https://github.com/Xeverything11/color-palette-generator/pulls">GitHub</a>. To report bugs, please open an issue on <a href="https://github.com/Xeverything11/color-palette-generator/issues">GitHub</a>.
+                To contribute, please make a pull request on <a href="https://github.com/Xeverything11/color-palette-generator/pulls" class="text-blue-700 hover:text-blue-800 hover:underline">GitHub</a>. To report bugs, please open an issue on <a href="https://github.com/Xeverything11/color-palette-generator/issues" class="text-blue-700 hover:text-blue-800 hover:underline">GitHub</a>.
             </p>
             
             
